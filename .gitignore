@@ -1,0 +1,14 @@
+### Deno ###
+/.idea/
+/.vscode/
+
+/node_modules
+
+.env
+*.orig
+*.pyc
+*.swp
+
+### Executable Files ###
+
+*.exe
