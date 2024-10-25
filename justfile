@@ -1,5 +1,13 @@
 compile:
-    deno compile --allow-net --allow-write --target x86_64-pc-windows-msvc -o nowplayingupdater.exe ./main.ts
+    deno task compile:win
 
-upload: compile
-    curl -F "file=@nowplayingupdater.exe" https://temp.sh/upload
+edit_version version:
+    sed -i bak 's/^const version = "v.*";/const version = "v{{version}}";/' ./main.ts
+
+tag version:
+    just edit_version {{ version }}
+    just compile
+    git add main.ts; git commit -m "update version to v{{ version }}"
+    git tag v{{ version }}
+    git push origin v{{ version }}
+    gh release create v{{ version }} --generate-notes --draft './nowplayingupdater.exe'
