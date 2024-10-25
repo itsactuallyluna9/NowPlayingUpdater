@@ -3,7 +3,7 @@ import {
   brightRed,
 } from "@std/fmt/colors";
 
-const version = "v0.1.0";
+const version = "v0.1.1";
 
 console.log(`Now Playing Updater ${version}`);
 console.log(
