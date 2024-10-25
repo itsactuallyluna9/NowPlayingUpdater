@@ -1,9 +1,11 @@
 import {
   brightCyan,
   brightRed,
-} from "https://deno.land/std@0.224.0/fmt/colors.ts";
+} from "@std/fmt/colors";
 
-console.log("Now Playing Updater v0.1.0-git");
+const version = "v0.1.0";
+
+console.log(`Now Playing Updater ${version}`);
 console.log(
   "Made with" + brightRed(" <3 ") + "by" + brightCyan(" Luna"),
 );
@@ -67,8 +69,7 @@ async function updateNowPlayingNeo() {
       "Updated now playing to " + data.info.name + " - " + data.info.artistName,
     );
   }
-  catch (e) {
-    console.log(e)
+  catch (_e) {
     if (errors > 5) {
       console.error("Too many errors, exiting...");
       Deno.exit(1);

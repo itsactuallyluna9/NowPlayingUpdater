@@ -2,5 +2,7 @@
   "tasks": {
     "dev": "deno run --watch main.ts",
     "compile": "deno compile --allow-net --allow-write --target x86_64-pc-windows-msvc ./main.ts"
+  "imports": {
+    "@std/fmt": "jsr:@std/fmt@^1.0.3"
   }
 }
